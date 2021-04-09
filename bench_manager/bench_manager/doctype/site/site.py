@@ -205,7 +205,7 @@ def verify_password(site_name, mysql_password):
 @frappe.whitelist()
 def create_site(site_name, install_erpnext, mysql_password, admin_password, key):
 	verify_whitelisted_call()
-	commands = ["bench new-site --mariadb-root-password {mysql_password} --admin-password {admin_password} {site_name}".format(site_name=site_name,
+	commands = ["bench new-site --mariadb-root-password {mysql_password} --admin-password {admin_password} {site_name} --no-mariadb-socket".format(site_name=site_name,
 		admin_password=admin_password, mysql_password=mysql_password)]
 	if install_erpnext == "true":
 		with open('apps.txt', 'r') as f:
