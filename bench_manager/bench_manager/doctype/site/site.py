@@ -132,7 +132,7 @@ class Site(Document):
 			"reinstall": ["bench --site {site_name} reinstall --yes --admin-password {admin_password}".format(site_name=self.name, admin_password=admin_password)],
 			"install_app": ["bench --site {site_name} install-app {app_name}".format(site_name=self.name, app_name=app_name)],
 			"uninstall_app": ["bench --site {site_name} uninstall-app {app_name} --yes".format(site_name=self.name, app_name=app_name)],
-			"drop_site": ["bench drop-site {site_name} --root-password {mysql_password}".format(site_name=self.name, mysql_password=mysql_password)]
+			"drop_site": ["bench drop-site {site_name} --root-password {mysql_password} --no-backup".format(site_name=self.name, mysql_password=mysql_password)]
 		}
 		frappe.enqueue('bench_manager.bench_manager.utils.run_command',
 			commands=commands[caller],
